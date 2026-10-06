@@ -1,0 +1,19 @@
+/* The analytics page's own parts: the top bar and the sign-in steps. The dashboard's styles are
+   report.css (built from report.js). */
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  max-width: 1180px; margin: 0 auto; padding: 16px 16px 0; }
+.brand { letter-spacing: .08em; font-size: 15px; }
+.brand span { color: var(--accent); }
+.controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px; }
+.controls .live { color: var(--muted); }
+select, input, button { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; }
+button { cursor: pointer; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.card { max-width: 420px; margin: 48px auto; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+.card h1 { font-size: 20px; margin: 0 0 6px; }
+.card form { display: grid; gap: 12px; margin-top: 14px; }
+.card label { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
+.card img { display: block; margin: 12px auto; background: #fff; border-radius: 8px; padding: 8px; }
+.card code { font: 12px Consolas, monospace; word-break: break-all; }
+.notice { max-width: 420px; margin: 0 auto; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--warn); color: var(--warn); }
+[hidden] { display: none !important; }

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://ueywbfrhcbqugoajuinx.supabase.co; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>EVCore Analytics</title>
+<link rel="stylesheet" href="./site.css">
+<link rel="stylesheet" href="./report.css">
+<script type="module" src="./app.js"></script>
+</head>
+<body>
+<div id="root" hidden>
+  <header class="topbar">
+    <b class="brand">EVCORE <span>ANALYTICS</span></b>
+    <div class="controls" id="controls" hidden>
+      <label>Period <select id="days"><option value="7">7 days</option><option value="30" selected>30 days</option><option value="90">90 days</option></select></label>
+      <span class="live" id="updated" aria-live="polite"></span>
+      <button id="refresh" type="button">Refresh</button>
+      <button id="signout" type="button">Sign out</button>
+    </div>
+  </header>
+
+  <section class="card" id="step-signin" hidden>
+    <h1>Sign in</h1>
+    <p class="muted">For the CS Harness owner only.</p>
+    <form id="signin-form" autocomplete="on">
+      <label>Email<input id="email" type="email" autocomplete="username" required></label>
+      <label>Password<input id="password" type="password" autocomplete="current-password" required></label>
+      <button type="submit" class="primary">Continue</button>
+    </form>
+  </section>
+
+  <section class="card" id="step-enroll" hidden>
+    <h1>Set up your authenticator</h1>
+    <p>Scan this code with an authenticator app (Google Authenticator, Microsoft Authenticator, 1Password…), then enter the 6-digit code it shows. You'll need it every time you sign in.</p>
+    <img id="qr" alt="Authenticator setup code" width="200" height="200">
+    <p class="muted">Can't scan? Enter this key in the app: <code id="secret"></code></p>
+    <form id="enroll-form"><label>6-digit code<input id="enroll-code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9 ]{6,7}" maxlength="7" required></label>
+      <button type="submit" class="primary">Verify and continue</button></form>
+  </section>
+
+  <section class="card" id="step-verify" hidden>
+    <h1>Authenticator code</h1>
+    <p>Enter the 6-digit code from your authenticator app.</p>
+    <form id="verify-form"><label>6-digit code<input id="verify-code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9 ]{6,7}" maxlength="7" required></label>
+      <button type="submit" class="primary">Verify</button></form>
+  </section>
+
+  <section class="card" id="step-denied" hidden>
+    <h1>No access</h1>
+    <p>This account cannot see analytics.</p>
+    <button id="denied-signout" type="button">Sign out</button>
+  </section>
+
+  <p class="notice" id="message" role="alert" hidden></p>
+  <main id="dashboard" hidden></main>
+</div>
+<noscript>This page needs JavaScript.</noscript>
+</body>
+</html>
